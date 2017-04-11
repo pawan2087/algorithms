@@ -18,7 +18,7 @@ public class ExamineDLL {
         String[] nodes = br.readLine().split(" ");
         SinglyLinkedList sll = new SinglyLinkedList();
         for (String n: nodes) {
-            sll.addNode(new LLNode(Integer.parseInt(n)));
+            sll.addNode((Integer.parseInt(n)));
         }
 
         System.out.println(sll.toString());
@@ -29,10 +29,10 @@ public class ExamineDLL {
             int data = Integer.parseInt(br.readLine());
             switch (selection) {
                 case 1:
-                    sll.insertNodeInFront(new LLNode(data));
+                    sll.insertNodeInFront((data));
                     break;
                 case 2:
-                    sll.addNode(new LLNode(data));
+                    sll.addNode((data));
                     break;
                 case 3:
                     break;

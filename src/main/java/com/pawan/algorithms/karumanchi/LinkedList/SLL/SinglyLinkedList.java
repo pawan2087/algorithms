@@ -9,8 +9,11 @@ public class SinglyLinkedList {
     private LLNode head = null;
     private int size=0;
 
-    public void addNode(LLNode node) {
+    public LLNode getHead() { return this.head; }
+
+    public void addNode(int data) {
         //First node of list .. hurray
+        LLNode node = new LLNode(data);
         if (null==head) {
             head = node;
         } else {
@@ -23,7 +26,8 @@ public class SinglyLinkedList {
         size++;
     }
 
-    public void insertNodeInFront(LLNode node) {
+    public void insertNodeInFront(int data) {
+        LLNode node = new LLNode(data);
         LLNode tempNode = head;
         head = node;
         node.setNext(tempNode);
@@ -35,12 +39,32 @@ public class SinglyLinkedList {
 
     }
 
-    public void deleteFirstNode() {
-
+    public LLNode deleteFirstNode() {
+        LLNode tempNode = head;
+        head = head.getNext();
+        tempNode.setNext(null);
+        return tempNode;
     }
 
-    public void deleteLastNode() {
+    public LLNode deleteLastNode() {
+        LLNode resultNode = null;
+        if (null==head) { System.out.println("head is null");return null;}
+        else if (null==head.getNext()) {
+            resultNode = head;
+            head = null;
+            return resultNode;
+        }
 
+        LLNode currNode = head.getNext();
+        LLNode prevNode = head;
+        //System.out.format("current=%d", currNode.getData());
+        while(currNode.getNext()!=null) {
+            currNode = currNode.getNext();
+            prevNode = prevNode.getNext();
+            //System.out.format("current=%d", currNode.getData());
+        }
+        prevNode.setNext(null);
+        return currNode;
     }
 
     public void deleteKthNode(int k) {
